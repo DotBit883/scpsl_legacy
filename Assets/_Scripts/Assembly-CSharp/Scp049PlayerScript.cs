@@ -6,11 +6,8 @@ public class Scp049PlayerScript : NetworkBehaviour
 {
 	[Header("Player Properties")]
 	public Camera plyCam;
-
 	public bool iAm049;
-
 	public bool sameClass;
-
 	public GameObject scpInstance;
 
 	[Header("Infection")]
@@ -18,36 +15,29 @@ public class Scp049PlayerScript : NetworkBehaviour
 
 	[Header("Attack & Recall")]
 	public float distance = 2.4f;
-
 	public float recallDistance = 3.5f;
-
 	public float recallProgress;
 
 	private GameObject recallingObject;
-
 	private Ragdoll recallingRagdoll;
-
 	private ScpInterfaces interfaces;
-
 	private Image loadingCircle;
-
 	private FirstPersonController fpc;
 
 	[Header("Boosts")]
 	public AnimationCurve boost_recallTime;
-
 	public AnimationCurve boost_infectTime;
 
+	//Initialization
 	private void Start()
 	{
 		interfaces = FindAnyObjectByType<ScpInterfaces>();
 		loadingCircle = interfaces.Scp049_loading;
-		if (base.isLocalPlayer)
+		if (isLocalPlayer)
 		{
 			fpc = GetComponent<FirstPersonController>();
 		}
 	}
-
 	public void Init(int classID, Class c)
 	{
 		sameClass = c.team == Team.SCP;
@@ -55,32 +45,31 @@ public class Scp049PlayerScript : NetworkBehaviour
 		{
 			scpInstance = null;
 		}
-		Scp049PlayerScript[] array = Object.FindObjectsOfType<Scp049PlayerScript>();
+		Scp049PlayerScript[] players = FindObjectsByType<Scp049PlayerScript>(FindObjectsSortMode.None);
 		if (classID == 5)
 		{
 			iAm049 = true;
-			Scp049PlayerScript[] array2 = array;
-			foreach (Scp049PlayerScript scp049PlayerScript in array2)
+			foreach (Scp049PlayerScript scp049PlayerScript in players)
 			{
-				scp049PlayerScript.scpInstance = base.gameObject;
+				scp049PlayerScript.scpInstance = gameObject;
 			}
 		}
 		else
 		{
 			iAm049 = false;
 		}
-		if (base.isLocalPlayer)
+		if (isLocalPlayer)
 		{
 			interfaces.Scp049_eq.SetActive(classID == 5);
 		}
 	}
 
+	//Game logic
 	private void Update()
 	{
 		DeductInfection();
 		UpdateInput();
 	}
-
 	private void DeductInfection()
 	{
 		if (currentInfection > 0f)
@@ -92,7 +81,6 @@ public class Scp049PlayerScript : NetworkBehaviour
 			currentInfection = 0f;
 		}
 	}
-
 	private void UpdateInput()
 	{
 		if (base.isLocalPlayer)
@@ -108,7 +96,6 @@ public class Scp049PlayerScript : NetworkBehaviour
 			Recalling();
 		}
 	}
-
 	private void Attack()
 	{
 		RaycastHit hitInfo;
@@ -121,7 +108,6 @@ public class Scp049PlayerScript : NetworkBehaviour
 			}
 		}
 	}
-
 	private void Surgery()
 	{
 		RaycastHit hitInfo;
@@ -145,13 +131,13 @@ public class Scp049PlayerScript : NetworkBehaviour
 			}
 		}
 	}
-
-	[Command(channel = 2)]
+	
+	//Networking
+	[Command]
 	private void CmdDestroyPlayer(GameObject recallingRagdoll)
 	{
 		NetworkServer.Destroy(recallingRagdoll);
 	}
-
 	private void Recalling()
 	{
 		if (iAm049 && Input.GetButton("Interact") && recallingObject != null)
@@ -177,27 +163,25 @@ public class Scp049PlayerScript : NetworkBehaviour
 		}
 		loadingCircle.fillAmount = recallProgress;
 	}
-
 	private void InfectPlayer(GameObject target, string id)
 	{
 		CmdInfectPlayer(target, boost_infectTime.Evaluate(GetComponent<PlayerStats>().GetHealthPercent()));
 		Hitmarker.Hit();
 		GetComponent<PlayerStats>().CmdHurtPlayer(new PlayerStats.HitInfo(999999f, id, "SCP:049"), target);
 	}
-
-	[Command(channel = 2)]
+	
+	[Command]
 	private void CmdInfectPlayer(GameObject target, float infTime)
 	{
 		RpcInfectPlayer(target, infTime);
 	}
-
-	[ClientRpc(channel = 2)]
+	[ClientRpc]
 	private void RpcInfectPlayer(GameObject target, float infTime)
 	{
 		target.GetComponent<Scp049PlayerScript>().currentInfection = infTime;
 	}
-
-	[Command(channel = 2)]
+	
+	[Command]
 	private void CmdRecallPlayer(GameObject target)
 	{
 		target.GetComponent<CharacterClassManager>().curClass = 10;
