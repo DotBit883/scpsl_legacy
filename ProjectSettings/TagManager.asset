@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Door
+  - DoorButton
+  - SecondDoor
+  - Speaker
+  - PlayerModel
+  - TurretButton
+  - Pickup
+  - SP_CDP
+  - SP_173
+  - 914_knob
+  - 914_use
+  - ElevatorButton
+  - SP_106
+  - Lever
+  - SP_MTF
+  - AW_Button
+  - AW_Detonation
+  - SP_049
+  - SP_RSC
+  - SP_079
+  - Locker
+  - Detector
+  - 294
+  - RoomID
+  - Ragdoll
+  - Target
+  - PD_EXIT
+  - Fire
+  - FemurBreaker
+  - Summary
+  - SP_CI
+  - SP_STUNTED
+  - CCTV
+  - LiftTarget
+  - ChatMessage
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Player
+  - Pickup
+  - Weapon_my
+  - Weapon_other
+  - Light
+  - Hitbox
+  - Glass
+  - Target173
+  - NonWeaponable
+  - Ragdoll
+  - CCTV
+  - CCTV_Glow
+  - Grenade
+  - Smoke
+  - Icon
+  - Skybox
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

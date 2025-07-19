@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 8949b0d681020a742969d89f7fd7a975
+timeCreated: 1752807520
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  name:
+  externalObjects: {}
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Unsteady Oversteer
+  fontNames:
+  - Unsteady Oversteer
+  fallbackFontReferences: []
+  customCharacters:
+  fontRenderingMode: 0
+  output:
+    hasEmptyFontData: 0
+  ascentCalculationMode: 1
+  userData:
+  assetBundleName:
+  assetBundleVariant:
