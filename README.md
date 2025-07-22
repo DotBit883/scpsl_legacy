@@ -56,7 +56,7 @@ The MTF helicopter appears to have been intended as a player-controllable vehicl
 
 Players would have needed to land on a helipad and navigate through checkpoints, with an arrow indicator showing their heading.
 
-The *Ride of the Valkyries* track found in the game files. This is likely a reference to its iconic use in *Apocalypse Now* (1979), where the U.S. 1/9 Air Cavalry plays the piece over loudspeakers during a helicopter assault, both as psychological warfare and to boost morale.
+The *Ride of the Valkyries* track found in the game files. This is likely a reference to its iconic use in *Apocalypse Now* (1979), where the U.S. 1/9 Air Cavalry plays the piece over helicopter-mounted loudspeakers during a helicopter assault.
 
 *This conclusion is based on in-game assets, so take it with a grain of salt.*
 
