@@ -6,9 +6,7 @@ public class Scp173PlayerScript : NetworkBehaviour
 {
 	[Header("Player Properties")]
 	public GameObject scpInstance;
-
 	public bool iAm173;
-
 	public bool sameClass;
 
 	[Header("Raycasting")]
