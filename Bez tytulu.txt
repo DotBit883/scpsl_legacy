@@ -1,0 +1,8 @@
+SCP-457
+SCP-008
+Servers
+
+457:
+wymiary: 5x5m + okno
+(airlock)
++ system chlodzenia (weze, zraszacze etc)
